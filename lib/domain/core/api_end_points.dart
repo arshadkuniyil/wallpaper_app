@@ -1,3 +1,5 @@
+import 'package:wallpaper_app/core/string.dart';
+
 class ApiEndPoints {
-  static const search= "https://pixabay.com/api/?key=20198555-13b098df5f25afb859785439e&q=flowers&image_type=photo&orientation=vertical";
+  static const search= "$kBaseUrl?key=$apiKey&image_type=photo&orientation=vertical&safesearch=true";
  }

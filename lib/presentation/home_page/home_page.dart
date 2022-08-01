@@ -10,6 +10,10 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
+      // BlocProvider.of<SearchBloc>(context)
+      //     .add(const SearchEvent.onSearch(imageQuery: ''));
+   
     return Scaffold(
       
       body: SafeArea(

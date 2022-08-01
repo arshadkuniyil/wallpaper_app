@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:wallpaper_app/application/bloc/search_bloc.dart';
+import 'package:wallpaper_app/domain/search/model/search_respons.dart';
 import 'package:wallpaper_app/domain/search/search_service.dart';
 
 // final List<String> imageUrl = [
@@ -30,9 +31,15 @@ class SearchResult extends StatelessWidget {
 
     return BlocBuilder<SearchBloc, SearchState>(
       builder: (context, state) {
-        if (state.isLoading) {
-          return  const _LoadIndicator();
+        SearchRespons? searchRespons;
 
+        if (state.isLoading) {
+          return const _LoadIndicator();
+        }
+        if (state.searchRespons != null) {
+          searchRespons = state.searchRespons;
+        } else {
+          return const SizedBox();
         }
         return Expanded(
           child: SingleChildScrollView(
@@ -41,17 +48,16 @@ class SearchResult extends StatelessWidget {
               axisDirection: AxisDirection.down,
               crossAxisCount: 2,
               children: List.generate(
-                state.searchRespons!.hits!.length +(state.scrollMaxLoading ? 1:0) ,
+                searchRespons!.hits!.length + (state.scrollMaxLoading ? 1 : 0),
                 (index) {
                   if (index < state.searchRespons!.hits!.length) {
                     return SearchResultTile(
                       imageUrl: state.searchRespons!.hits![index].webformatUrl!,
                     );
                   } else {
-                  
-                      scrollController
-                          .jumpTo(scrollController.position.maxScrollExtent);
-                    
+                    scrollController
+                        .jumpTo(scrollController.position.maxScrollExtent);
+
                     return const _LoadIndicator();
                   }
                 },

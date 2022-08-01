@@ -17,10 +17,16 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
   SearchBloc(SearchService searchService) : super(SearchState.initial()) {
     int page = 1;
     SearchRespons? firstSearchResult;
+    String? _imageQuery;
     on<OnSearch>((event, emit) async {
-      emit(state.copyWith(searchRespons: null, isLoading: true));
+      print("test");
+      _imageQuery = event.imageQuery;
+      print(_imageQuery.toString());
+      emit(state.copyWith(
+          searchRespons: null, isLoading: true, scrollMaxLoading: false));
 
-      firstSearchResult = await searchService.getSearchImages(page);
+      firstSearchResult =
+          await searchService.getSearchImages(page, _imageQuery!);
 
       emit(SearchState(
           isLoading: false,
@@ -37,9 +43,9 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
           isLoading: false,
           scrollMaxLoading: true));
       page++;
+      _imageQuery ??= '';
 
-      final _result1 = await searchService.getSearchImages(page);
-      
+      final _result1 = await searchService.getSearchImages(page, _imageQuery!);
 
       _result1!.hits!.insertAll(0, firstSearchResult!.hits!);
 

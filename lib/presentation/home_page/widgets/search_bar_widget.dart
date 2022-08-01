@@ -11,9 +11,14 @@ class SearchBarWidget extends StatelessWidget {
       margin: const EdgeInsets.all(10),
       child: TextFormField(
         controller: searchTextController,
-        onFieldSubmitted: (value) => {
-          searchTextController.clear(),
-          BlocProvider.of<SearchBloc>(context).add(const SearchEvent.onSearch())
+        onFieldSubmitted: (value) {
+          
+          BlocProvider.of<SearchBloc>(context).add(
+            SearchEvent.onSearch(
+              imageQuery: value,
+            ),
+          );
+          searchTextController.clear();
         },
         decoration: InputDecoration(
           hintText: "Search images ",
