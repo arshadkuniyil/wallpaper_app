@@ -1,6 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:dartz/dartz.dart';
+import 'package:wallpaper_app/domain/core/failures/main_failure.dart';
+import 'package:wallpaper_app/domain/search/model/hit.dart';
 import 'package:wallpaper_app/domain/search/model/search_respons.dart';
 
 import 'package:wallpaper_app/domain/search/search_service.dart';
@@ -12,14 +15,38 @@ part 'search_bloc.freezed.dart';
 @injectable
 class SearchBloc extends Bloc<SearchEvent, SearchState> {
   SearchBloc(SearchService searchService) : super(SearchState.initial()) {
+    int page = 1;
+    SearchRespons? firstSearchResult;
     on<OnSearch>((event, emit) async {
-      emit(const SearchState(searchRespons: null, isLoading: true));
-      final _result = await searchService.getSearchImages();
-      final state = _result.fold(
-        (l) => const SearchState(searchRespons: null, isLoading: false),
-        (r) => SearchState(searchRespons: r, isLoading: false),
-      );
-      emit(state);
+      emit(state.copyWith(searchRespons: null, isLoading: true));
+
+      firstSearchResult = await searchService.getSearchImages(page);
+
+      emit(SearchState(
+          isLoading: false,
+          searchRespons: firstSearchResult,
+          scrollMaxLoading: false));
+    });
+
+    on<OnScrollMax>((event, emit) async {
+      if (state.isLoading) {
+        return;
+      }
+      emit(state.copyWith(
+          searchRespons: firstSearchResult,
+          isLoading: false,
+          scrollMaxLoading: true));
+      page++;
+
+      final _result1 = await searchService.getSearchImages(page);
+      
+
+      _result1!.hits!.insertAll(0, firstSearchResult!.hits!);
+
+      firstSearchResult!.hits = _result1.hits!;
+
+      emit(SearchState(
+          searchRespons: _result1, isLoading: false, scrollMaxLoading: false));
     });
   }
 }

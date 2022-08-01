@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 import 'dart:ui';
 
@@ -14,27 +15,47 @@ import 'package:wallpaper_app/domain/search/search_service.dart';
 // ];
 
 class SearchResult extends StatelessWidget {
-  const SearchResult({Key? key}) : super(key: key);
+  SearchResult({Key? key}) : super(key: key);
+  final scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
+    scrollController.addListener(() {
+      if (scrollController.position.atEdge &&
+          scrollController.position.pixels != 0) {
+        BlocProvider.of<SearchBloc>(context)
+            .add(const SearchEvent.onScrollMax());
+      }
+    });
+
     return BlocBuilder<SearchBloc, SearchState>(
       builder: (context, state) {
         if (state.isLoading) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
+          return  const _LoadIndicator();
+
         }
         return Expanded(
           child: SingleChildScrollView(
+            controller: scrollController,
             child: StaggeredGrid.count(
               axisDirection: AxisDirection.down,
               crossAxisCount: 2,
               children: List.generate(
-                  state.searchRespons!.hits!.length,
-                  (index) => SearchResultTile(
-                        imageUrl: state.searchRespons!.hits![index].webformatUrl!,
-                      )),
+                state.searchRespons!.hits!.length +(state.scrollMaxLoading ? 1:0) ,
+                (index) {
+                  if (index < state.searchRespons!.hits!.length) {
+                    return SearchResultTile(
+                      imageUrl: state.searchRespons!.hits![index].webformatUrl!,
+                    );
+                  } else {
+                  
+                      scrollController
+                          .jumpTo(scrollController.position.maxScrollExtent);
+                    
+                    return const _LoadIndicator();
+                  }
+                },
+              ),
             ),
           ),
         );
@@ -43,9 +64,22 @@ class SearchResult extends StatelessWidget {
   }
 }
 
+class _LoadIndicator extends StatelessWidget {
+  const _LoadIndicator({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const Center(
+      child: CircularProgressIndicator(),
+    );
+  }
+}
+
 class SearchResultTile extends StatelessWidget {
   final String imageUrl;
-  SearchResultTile({Key? key, required this.imageUrl}) : super(key: key);
+  const SearchResultTile({Key? key, required this.imageUrl}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

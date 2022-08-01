@@ -19,32 +19,38 @@ mixin _$SearchEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() onSearch,
+    required TResult Function() onScrollMax,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? onSearch,
+    TResult Function()? onScrollMax,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? onSearch,
+    TResult Function()? onScrollMax,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(OnSearch value) onSearch,
+    required TResult Function(OnScrollMax value) onScrollMax,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(OnSearch value)? onSearch,
+    TResult Function(OnScrollMax value)? onScrollMax,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(OnSearch value)? onSearch,
+    TResult Function(OnScrollMax value)? onScrollMax,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -106,6 +112,7 @@ class _$OnSearch implements OnSearch {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() onSearch,
+    required TResult Function() onScrollMax,
   }) {
     return onSearch();
   }
@@ -114,6 +121,7 @@ class _$OnSearch implements OnSearch {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? onSearch,
+    TResult Function()? onScrollMax,
   }) {
     return onSearch?.call();
   }
@@ -122,6 +130,7 @@ class _$OnSearch implements OnSearch {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? onSearch,
+    TResult Function()? onScrollMax,
     required TResult orElse(),
   }) {
     if (onSearch != null) {
@@ -134,6 +143,7 @@ class _$OnSearch implements OnSearch {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(OnSearch value) onSearch,
+    required TResult Function(OnScrollMax value) onScrollMax,
   }) {
     return onSearch(this);
   }
@@ -142,6 +152,7 @@ class _$OnSearch implements OnSearch {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(OnSearch value)? onSearch,
+    TResult Function(OnScrollMax value)? onScrollMax,
   }) {
     return onSearch?.call(this);
   }
@@ -150,6 +161,7 @@ class _$OnSearch implements OnSearch {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(OnSearch value)? onSearch,
+    TResult Function(OnScrollMax value)? onScrollMax,
     required TResult orElse(),
   }) {
     if (onSearch != null) {
@@ -164,8 +176,113 @@ abstract class OnSearch implements SearchEvent {
 }
 
 /// @nodoc
+abstract class _$$OnScrollMaxCopyWith<$Res> {
+  factory _$$OnScrollMaxCopyWith(
+          _$OnScrollMax value, $Res Function(_$OnScrollMax) then) =
+      __$$OnScrollMaxCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$OnScrollMaxCopyWithImpl<$Res> extends _$SearchEventCopyWithImpl<$Res>
+    implements _$$OnScrollMaxCopyWith<$Res> {
+  __$$OnScrollMaxCopyWithImpl(
+      _$OnScrollMax _value, $Res Function(_$OnScrollMax) _then)
+      : super(_value, (v) => _then(v as _$OnScrollMax));
+
+  @override
+  _$OnScrollMax get _value => super._value as _$OnScrollMax;
+}
+
+/// @nodoc
+
+class _$OnScrollMax implements OnScrollMax {
+  const _$OnScrollMax();
+
+  @override
+  String toString() {
+    return 'SearchEvent.onScrollMax()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$OnScrollMax);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() onSearch,
+    required TResult Function() onScrollMax,
+  }) {
+    return onScrollMax();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? onSearch,
+    TResult Function()? onScrollMax,
+  }) {
+    return onScrollMax?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? onSearch,
+    TResult Function()? onScrollMax,
+    required TResult orElse(),
+  }) {
+    if (onScrollMax != null) {
+      return onScrollMax();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(OnSearch value) onSearch,
+    required TResult Function(OnScrollMax value) onScrollMax,
+  }) {
+    return onScrollMax(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(OnSearch value)? onSearch,
+    TResult Function(OnScrollMax value)? onScrollMax,
+  }) {
+    return onScrollMax?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(OnSearch value)? onSearch,
+    TResult Function(OnScrollMax value)? onScrollMax,
+    required TResult orElse(),
+  }) {
+    if (onScrollMax != null) {
+      return onScrollMax(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class OnScrollMax implements SearchEvent {
+  const factory OnScrollMax() = _$OnScrollMax;
+}
+
+/// @nodoc
 mixin _$SearchState {
   bool get isLoading => throw _privateConstructorUsedError;
+  bool get scrollMaxLoading => throw _privateConstructorUsedError;
   SearchRespons? get searchRespons => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -178,7 +295,8 @@ abstract class $SearchStateCopyWith<$Res> {
   factory $SearchStateCopyWith(
           SearchState value, $Res Function(SearchState) then) =
       _$SearchStateCopyWithImpl<$Res>;
-  $Res call({bool isLoading, SearchRespons? searchRespons});
+  $Res call(
+      {bool isLoading, bool scrollMaxLoading, SearchRespons? searchRespons});
 }
 
 /// @nodoc
@@ -192,12 +310,17 @@ class _$SearchStateCopyWithImpl<$Res> implements $SearchStateCopyWith<$Res> {
   @override
   $Res call({
     Object? isLoading = freezed,
+    Object? scrollMaxLoading = freezed,
     Object? searchRespons = freezed,
   }) {
     return _then(_value.copyWith(
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      scrollMaxLoading: scrollMaxLoading == freezed
+          ? _value.scrollMaxLoading
+          : scrollMaxLoading // ignore: cast_nullable_to_non_nullable
               as bool,
       searchRespons: searchRespons == freezed
           ? _value.searchRespons
@@ -214,7 +337,8 @@ abstract class _$$_SearchStateCopyWith<$Res>
           _$_SearchState value, $Res Function(_$_SearchState) then) =
       __$$_SearchStateCopyWithImpl<$Res>;
   @override
-  $Res call({bool isLoading, SearchRespons? searchRespons});
+  $Res call(
+      {bool isLoading, bool scrollMaxLoading, SearchRespons? searchRespons});
 }
 
 /// @nodoc
@@ -230,12 +354,17 @@ class __$$_SearchStateCopyWithImpl<$Res> extends _$SearchStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isLoading = freezed,
+    Object? scrollMaxLoading = freezed,
     Object? searchRespons = freezed,
   }) {
     return _then(_$_SearchState(
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      scrollMaxLoading: scrollMaxLoading == freezed
+          ? _value.scrollMaxLoading
+          : scrollMaxLoading // ignore: cast_nullable_to_non_nullable
               as bool,
       searchRespons: searchRespons == freezed
           ? _value.searchRespons
@@ -248,16 +377,21 @@ class __$$_SearchStateCopyWithImpl<$Res> extends _$SearchStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_SearchState implements _SearchState {
-  const _$_SearchState({required this.isLoading, required this.searchRespons});
+  const _$_SearchState(
+      {required this.isLoading,
+      required this.scrollMaxLoading,
+      required this.searchRespons});
 
   @override
   final bool isLoading;
+  @override
+  final bool scrollMaxLoading;
   @override
   final SearchRespons? searchRespons;
 
   @override
   String toString() {
-    return 'SearchState(isLoading: $isLoading, searchRespons: $searchRespons)';
+    return 'SearchState(isLoading: $isLoading, scrollMaxLoading: $scrollMaxLoading, searchRespons: $searchRespons)';
   }
 
   @override
@@ -267,6 +401,8 @@ class _$_SearchState implements _SearchState {
             other is _$_SearchState &&
             const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
             const DeepCollectionEquality()
+                .equals(other.scrollMaxLoading, scrollMaxLoading) &&
+            const DeepCollectionEquality()
                 .equals(other.searchRespons, searchRespons));
   }
 
@@ -274,6 +410,7 @@ class _$_SearchState implements _SearchState {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(isLoading),
+      const DeepCollectionEquality().hash(scrollMaxLoading),
       const DeepCollectionEquality().hash(searchRespons));
 
   @JsonKey(ignore: true)
@@ -285,10 +422,13 @@ class _$_SearchState implements _SearchState {
 abstract class _SearchState implements SearchState {
   const factory _SearchState(
       {required final bool isLoading,
+      required final bool scrollMaxLoading,
       required final SearchRespons? searchRespons}) = _$_SearchState;
 
   @override
   bool get isLoading => throw _privateConstructorUsedError;
+  @override
+  bool get scrollMaxLoading => throw _privateConstructorUsedError;
   @override
   SearchRespons? get searchRespons => throw _privateConstructorUsedError;
   @override
