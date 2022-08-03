@@ -14,8 +14,11 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
+  
+
   @override
   Widget build(BuildContext context) {
+    
     return BlocProvider(
       create: (context) => getIt<SearchBloc>(),
       child: MaterialApp(
@@ -23,7 +26,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const HomePage(),
+        home:  HomePage(),
       ),
     );
   }

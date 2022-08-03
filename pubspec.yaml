@@ -42,6 +42,9 @@ dependencies:
   freezed_annotation: ^2.1.0
   injectable: ^1.5.3
   get_it: ^7.2.0
+  flutter_cache_manager: ^3.3.0
+  async_wallpaper: ^1.0.1
+  simple_animations: ^4.0.2
   
 dev_dependencies:
   flutter_test:

@@ -35,13 +35,14 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     });
 
     on<OnScrollMax>((event, emit) async {
-      if (state.isLoading) {
+      if (state.scrollMaxLoading) {
         return;
       }
       emit(state.copyWith(
-          searchRespons: firstSearchResult,
-          isLoading: false,
-          scrollMaxLoading: true));
+        searchRespons: firstSearchResult,
+        isLoading: false,
+        scrollMaxLoading: true,
+      ));
       page++;
       _imageQuery ??= '';
 
