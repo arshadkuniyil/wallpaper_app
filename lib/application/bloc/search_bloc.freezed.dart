@@ -313,7 +313,7 @@ abstract class OnScrollMax implements SearchEvent {
 mixin _$SearchState {
   bool get isLoading => throw _privateConstructorUsedError;
   bool get scrollMaxLoading => throw _privateConstructorUsedError;
-  SearchRespons? get searchRespons => throw _privateConstructorUsedError;
+  SearchRespons get searchRespons => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SearchStateCopyWith<SearchState> get copyWith =>
@@ -326,7 +326,7 @@ abstract class $SearchStateCopyWith<$Res> {
           SearchState value, $Res Function(SearchState) then) =
       _$SearchStateCopyWithImpl<$Res>;
   $Res call(
-      {bool isLoading, bool scrollMaxLoading, SearchRespons? searchRespons});
+      {bool isLoading, bool scrollMaxLoading, SearchRespons searchRespons});
 }
 
 /// @nodoc
@@ -355,7 +355,7 @@ class _$SearchStateCopyWithImpl<$Res> implements $SearchStateCopyWith<$Res> {
       searchRespons: searchRespons == freezed
           ? _value.searchRespons
           : searchRespons // ignore: cast_nullable_to_non_nullable
-              as SearchRespons?,
+              as SearchRespons,
     ));
   }
 }
@@ -368,7 +368,7 @@ abstract class _$$_SearchStateCopyWith<$Res>
       __$$_SearchStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {bool isLoading, bool scrollMaxLoading, SearchRespons? searchRespons});
+      {bool isLoading, bool scrollMaxLoading, SearchRespons searchRespons});
 }
 
 /// @nodoc
@@ -399,7 +399,7 @@ class __$$_SearchStateCopyWithImpl<$Res> extends _$SearchStateCopyWithImpl<$Res>
       searchRespons: searchRespons == freezed
           ? _value.searchRespons
           : searchRespons // ignore: cast_nullable_to_non_nullable
-              as SearchRespons?,
+              as SearchRespons,
     ));
   }
 }
@@ -417,7 +417,7 @@ class _$_SearchState implements _SearchState {
   @override
   final bool scrollMaxLoading;
   @override
-  final SearchRespons? searchRespons;
+  final SearchRespons searchRespons;
 
   @override
   String toString() {
@@ -453,14 +453,14 @@ abstract class _SearchState implements SearchState {
   const factory _SearchState(
       {required final bool isLoading,
       required final bool scrollMaxLoading,
-      required final SearchRespons? searchRespons}) = _$_SearchState;
+      required final SearchRespons searchRespons}) = _$_SearchState;
 
   @override
   bool get isLoading => throw _privateConstructorUsedError;
   @override
   bool get scrollMaxLoading => throw _privateConstructorUsedError;
   @override
-  SearchRespons? get searchRespons => throw _privateConstructorUsedError;
+  SearchRespons get searchRespons => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_SearchStateCopyWith<_$_SearchState> get copyWith =>

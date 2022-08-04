@@ -5,10 +5,10 @@ class SearchState with _$SearchState {
   const factory SearchState({
     required bool isLoading,
     required bool scrollMaxLoading,
-    required SearchRespons? searchRespons,
+    required SearchRespons searchRespons,
   }) = _SearchState;
   factory SearchState.initial() {
-    return  const SearchState(searchRespons: null, isLoading: true, scrollMaxLoading: false);
+    return   SearchState(searchRespons: SearchRespons(status: ApiCallStatus.notStarted), isLoading: true, scrollMaxLoading: false);
   }
 }
 

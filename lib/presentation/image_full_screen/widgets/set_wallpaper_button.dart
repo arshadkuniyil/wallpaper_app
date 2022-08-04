@@ -1,34 +1,78 @@
+import 'dart:io';
+
+import 'package:async_wallpaper/async_wallpaper.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_cache_manager/file.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:wallpaper_app/core/colors.dart';
+import 'package:wallpaper_app/core/constant.dart';
+import 'package:wallpaper_app/presentation/widgets/loading_indicator.dart';
 
 class SetWallpaperButton extends StatelessWidget {
-  const SetWallpaperButton({
-    Key? key,
-  }) : super(key: key);
+  SetWallpaperButton({Key? key, required this.imageUrl}) : super(key: key);
+  final String imageUrl;
+  ValueNotifier buttonLoading = ValueNotifier(false);
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 40.0),
-      child: ElevatedButton(
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(mainColor),
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-            RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(18.0),
-              side: const BorderSide(color: kBlackColor),
+    return ValueListenableBuilder(
+      valueListenable: buttonLoading,
+      builder: (context, value, child) {
+        if (buttonLoading.value) {
+          return const LoadingIndicator();
+        }
+
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10.0),
+          child: Container(
+            height: 36,
+            width: double.infinity,
+            decoration: BoxDecoration(boxShadow: kBoxshadow),
+            child: ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(mainColor),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0),
+                    
+                  ),
+                ),
+              ),
+              onPressed: () async {
+                buttonLoading.value = true;
+                String result = '';
+                
+
+                try {
+                  final File file =
+                      await DefaultCacheManager().getSingleFile(imageUrl);
+                  await AsyncWallpaper.setWallpaperFromFile(
+                      file.path, AsyncWallpaper.BOTH_SCREENS);
+                  result = 'Set wallpaper successful';
+                } on PlatformException {
+                  result = 'Failed to get wallpaper.';
+                } on SocketException{
+                  result = 'check internet connection';
+                }
+                catch (e) {
+                  result = '$e';
+                } finally {
+                  var snackBar = SnackBar(
+                    content: Text(result),
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  buttonLoading.value = false;
+                }
+              },
+              child:  Text(
+                'Set Wallpaper',
+                style: TextStyle(color: kIndigoColor),
+              ),
             ),
           ),
-        ),
-        onPressed: () {
-
-          
-        },
-        child: const Text(
-          'Set Wallpaper',
-          style: TextStyle(color: kBlackColor),
-        ),
-      ),
+        );
+      },
     );
   }
 }

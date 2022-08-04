@@ -8,6 +8,7 @@ part of 'search_respons.dart';
 
 SearchRespons _$SearchResponsFromJson(Map<String, dynamic> json) =>
     SearchRespons(
+      status: json['status'] as int?,
       total: json['total'] as int?,
       totalHits: json['totalHits'] as int?,
       hits: (json['hits'] as List<dynamic>?)
@@ -17,6 +18,7 @@ SearchRespons _$SearchResponsFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$SearchResponsToJson(SearchRespons instance) =>
     <String, dynamic>{
+      'status': instance.status,
       'total': instance.total,
       'totalHits': instance.totalHits,
       'hits': instance.hits,
