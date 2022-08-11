@@ -24,7 +24,7 @@ class SetWallpaperButton extends StatelessWidget {
         }
 
         return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10.0),
+          padding: const EdgeInsets.symmetric(horizontal: 10.0,vertical: 12),
           child: Container(
             height: 36,
             width: double.infinity,
@@ -65,9 +65,9 @@ class SetWallpaperButton extends StatelessWidget {
                   buttonLoading.value = false;
                 }
               },
-              child:  Text(
+              child:  const Text(
                 'Set Wallpaper',
-                style: TextStyle(color: kIndigoColor),
+                style: TextStyle(color: kBlackColor),
               ),
             ),
           ),

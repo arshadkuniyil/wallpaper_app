@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:wallpaper_app/core/constant.dart';
 import 'package:wallpaper_app/presentation/widgets/image_error_widget.dart';
 import 'package:wallpaper_app/presentation/widgets/loading_builder_widget.dart';
-import 'package:wallpaper_app/presentation/widgets/loading_indicator.dart';
+
 
 class ImageContainerWidget extends StatelessWidget {
   const ImageContainerWidget(
@@ -23,7 +23,7 @@ class ImageContainerWidget extends StatelessWidget {
     return Center(
       child: Container(
         width: size != null ? size!.width : deviceSize.width,
-        margin: const EdgeInsets.symmetric(horizontal: 15),
+        margin: const EdgeInsets.symmetric(horizontal: 15,vertical: 10),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(18),
           boxShadow: kBoxshadow,
@@ -36,6 +36,7 @@ class ImageContainerWidget extends StatelessWidget {
               return AspectRatio(
                 aspectRatio: width / height,
                 child: Container(
+                  decoration: kCardDecoration,
                   child: child,
                 ),
               );

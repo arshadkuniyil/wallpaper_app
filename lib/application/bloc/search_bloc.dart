@@ -18,7 +18,9 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         SearchRespons(status: ApiCallStatus.notStarted);
 
     String? _imageQuery;
+
     on<OnSearch>((event, emit) async {
+      page = 1;
       _imageQuery = event.imageQuery;
 
       emit(state.copyWith(
@@ -54,14 +56,13 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         _result1.hits!.insertAll(0, firstSearchResult.hits!);
 
         firstSearchResult.hits = _result1.hits!;
-       
+
         emit(SearchState(
           searchRespons: _result1,
           isLoading: false,
           scrollMaxLoading: false,
         ));
       } else {
-       
         emit(SearchState(
           searchRespons: _result1,
           isLoading: false,

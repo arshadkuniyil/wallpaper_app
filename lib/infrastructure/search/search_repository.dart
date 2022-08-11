@@ -11,8 +11,9 @@ class SearchRepository extends SearchService {
   @override
   Future<SearchRespons> getSearchImages(pageNum, imageQuery) async {
     try {
-      final Response response = await Dio(BaseOptions())
-          .get('${ApiEndPoints.search}&page=$pageNum&q=$imageQuery');
+      final Response  response = await Dio(BaseOptions())
+            .get('${ApiEndPoints.search}&page=$pageNum&q=$imageQuery');
+      
 
       if (response.statusCode == 200 || response.statusCode == 201) {
         final result = SearchRespons.fromJson(response.data);

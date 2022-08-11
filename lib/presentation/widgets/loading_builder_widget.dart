@@ -8,21 +8,17 @@ class LoadingBuilderWidget extends StatelessWidget {
     Key? key,
     required this.width,
     required this.height,
-    
   }) : super(key: key);
 
   final double width;
   final double height;
-  
 
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
-      aspectRatio: width/height,
+      aspectRatio: width / height,
       child: Container(
-       
-        decoration:
-            kDecoration,
+        decoration: kCardDecoration,
         child: const LoadingIndicator(),
       ),
     );

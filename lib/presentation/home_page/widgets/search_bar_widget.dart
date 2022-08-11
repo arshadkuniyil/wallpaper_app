@@ -14,7 +14,7 @@ class SearchBarWidget extends StatelessWidget {
        height: 32,
       decoration: BoxDecoration(
         color: mainColor,
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: BorderRadius.circular(6),
         boxShadow: kBoxshadow,
       ),
      
@@ -24,12 +24,13 @@ class SearchBarWidget extends StatelessWidget {
         child: TextFormField(
           
           
-          cursorColor: kIndigoColor,
+          cursorColor: kBlackColor,
           controller: searchTextController,
           onFieldSubmitted: (value) {
             BlocProvider.of<SearchBloc>(context).add(
               SearchEvent.onSearch(
                 imageQuery: value,
+                
               ),
             );
             searchTextController.clear();

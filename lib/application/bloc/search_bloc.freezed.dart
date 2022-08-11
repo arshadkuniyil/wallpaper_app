@@ -18,20 +18,23 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$SearchEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String imageQuery) onSearch,
+    required TResult Function(String? imageQuery) onSearch,
     required TResult Function() onScrollMax,
+    required TResult Function() onRefresh,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String imageQuery)? onSearch,
+    TResult Function(String? imageQuery)? onSearch,
     TResult Function()? onScrollMax,
+    TResult Function()? onRefresh,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String imageQuery)? onSearch,
+    TResult Function(String? imageQuery)? onSearch,
     TResult Function()? onScrollMax,
+    TResult Function()? onRefresh,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$SearchEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(OnSearch value) onSearch,
     required TResult Function(OnScrollMax value) onScrollMax,
+    required TResult Function(OnRefresh value) onRefresh,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(OnSearch value)? onSearch,
     TResult Function(OnScrollMax value)? onScrollMax,
+    TResult Function(OnRefresh value)? onRefresh,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(OnSearch value)? onSearch,
     TResult Function(OnScrollMax value)? onScrollMax,
+    TResult Function(OnRefresh value)? onRefresh,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -77,7 +83,7 @@ abstract class _$$OnSearchCopyWith<$Res> {
   factory _$$OnSearchCopyWith(
           _$OnSearch value, $Res Function(_$OnSearch) then) =
       __$$OnSearchCopyWithImpl<$Res>;
-  $Res call({String imageQuery});
+  $Res call({String? imageQuery});
 }
 
 /// @nodoc
@@ -97,7 +103,7 @@ class __$$OnSearchCopyWithImpl<$Res> extends _$SearchEventCopyWithImpl<$Res>
       imageQuery: imageQuery == freezed
           ? _value.imageQuery
           : imageQuery // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -105,10 +111,10 @@ class __$$OnSearchCopyWithImpl<$Res> extends _$SearchEventCopyWithImpl<$Res>
 /// @nodoc
 
 class _$OnSearch implements OnSearch {
-  const _$OnSearch({required this.imageQuery});
+  const _$OnSearch({this.imageQuery});
 
   @override
-  final String imageQuery;
+  final String? imageQuery;
 
   @override
   String toString() {
@@ -136,8 +142,9 @@ class _$OnSearch implements OnSearch {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String imageQuery) onSearch,
+    required TResult Function(String? imageQuery) onSearch,
     required TResult Function() onScrollMax,
+    required TResult Function() onRefresh,
   }) {
     return onSearch(imageQuery);
   }
@@ -145,8 +152,9 @@ class _$OnSearch implements OnSearch {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String imageQuery)? onSearch,
+    TResult Function(String? imageQuery)? onSearch,
     TResult Function()? onScrollMax,
+    TResult Function()? onRefresh,
   }) {
     return onSearch?.call(imageQuery);
   }
@@ -154,8 +162,9 @@ class _$OnSearch implements OnSearch {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String imageQuery)? onSearch,
+    TResult Function(String? imageQuery)? onSearch,
     TResult Function()? onScrollMax,
+    TResult Function()? onRefresh,
     required TResult orElse(),
   }) {
     if (onSearch != null) {
@@ -169,6 +178,7 @@ class _$OnSearch implements OnSearch {
   TResult map<TResult extends Object?>({
     required TResult Function(OnSearch value) onSearch,
     required TResult Function(OnScrollMax value) onScrollMax,
+    required TResult Function(OnRefresh value) onRefresh,
   }) {
     return onSearch(this);
   }
@@ -178,6 +188,7 @@ class _$OnSearch implements OnSearch {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(OnSearch value)? onSearch,
     TResult Function(OnScrollMax value)? onScrollMax,
+    TResult Function(OnRefresh value)? onRefresh,
   }) {
     return onSearch?.call(this);
   }
@@ -187,6 +198,7 @@ class _$OnSearch implements OnSearch {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(OnSearch value)? onSearch,
     TResult Function(OnScrollMax value)? onScrollMax,
+    TResult Function(OnRefresh value)? onRefresh,
     required TResult orElse(),
   }) {
     if (onSearch != null) {
@@ -197,9 +209,9 @@ class _$OnSearch implements OnSearch {
 }
 
 abstract class OnSearch implements SearchEvent {
-  const factory OnSearch({required final String imageQuery}) = _$OnSearch;
+  const factory OnSearch({final String? imageQuery}) = _$OnSearch;
 
-  String get imageQuery => throw _privateConstructorUsedError;
+  String? get imageQuery => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$$OnSearchCopyWith<_$OnSearch> get copyWith =>
       throw _privateConstructorUsedError;
@@ -245,8 +257,9 @@ class _$OnScrollMax implements OnScrollMax {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String imageQuery) onSearch,
+    required TResult Function(String? imageQuery) onSearch,
     required TResult Function() onScrollMax,
+    required TResult Function() onRefresh,
   }) {
     return onScrollMax();
   }
@@ -254,8 +267,9 @@ class _$OnScrollMax implements OnScrollMax {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String imageQuery)? onSearch,
+    TResult Function(String? imageQuery)? onSearch,
     TResult Function()? onScrollMax,
+    TResult Function()? onRefresh,
   }) {
     return onScrollMax?.call();
   }
@@ -263,8 +277,9 @@ class _$OnScrollMax implements OnScrollMax {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String imageQuery)? onSearch,
+    TResult Function(String? imageQuery)? onSearch,
     TResult Function()? onScrollMax,
+    TResult Function()? onRefresh,
     required TResult orElse(),
   }) {
     if (onScrollMax != null) {
@@ -278,6 +293,7 @@ class _$OnScrollMax implements OnScrollMax {
   TResult map<TResult extends Object?>({
     required TResult Function(OnSearch value) onSearch,
     required TResult Function(OnScrollMax value) onScrollMax,
+    required TResult Function(OnRefresh value) onRefresh,
   }) {
     return onScrollMax(this);
   }
@@ -287,6 +303,7 @@ class _$OnScrollMax implements OnScrollMax {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(OnSearch value)? onSearch,
     TResult Function(OnScrollMax value)? onScrollMax,
+    TResult Function(OnRefresh value)? onRefresh,
   }) {
     return onScrollMax?.call(this);
   }
@@ -296,6 +313,7 @@ class _$OnScrollMax implements OnScrollMax {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(OnSearch value)? onSearch,
     TResult Function(OnScrollMax value)? onScrollMax,
+    TResult Function(OnRefresh value)? onRefresh,
     required TResult orElse(),
   }) {
     if (onScrollMax != null) {
@@ -307,6 +325,116 @@ class _$OnScrollMax implements OnScrollMax {
 
 abstract class OnScrollMax implements SearchEvent {
   const factory OnScrollMax() = _$OnScrollMax;
+}
+
+/// @nodoc
+abstract class _$$OnRefreshCopyWith<$Res> {
+  factory _$$OnRefreshCopyWith(
+          _$OnRefresh value, $Res Function(_$OnRefresh) then) =
+      __$$OnRefreshCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$OnRefreshCopyWithImpl<$Res> extends _$SearchEventCopyWithImpl<$Res>
+    implements _$$OnRefreshCopyWith<$Res> {
+  __$$OnRefreshCopyWithImpl(
+      _$OnRefresh _value, $Res Function(_$OnRefresh) _then)
+      : super(_value, (v) => _then(v as _$OnRefresh));
+
+  @override
+  _$OnRefresh get _value => super._value as _$OnRefresh;
+}
+
+/// @nodoc
+
+class _$OnRefresh implements OnRefresh {
+  const _$OnRefresh();
+
+  @override
+  String toString() {
+    return 'SearchEvent.onRefresh()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$OnRefresh);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String? imageQuery) onSearch,
+    required TResult Function() onScrollMax,
+    required TResult Function() onRefresh,
+  }) {
+    return onRefresh();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String? imageQuery)? onSearch,
+    TResult Function()? onScrollMax,
+    TResult Function()? onRefresh,
+  }) {
+    return onRefresh?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String? imageQuery)? onSearch,
+    TResult Function()? onScrollMax,
+    TResult Function()? onRefresh,
+    required TResult orElse(),
+  }) {
+    if (onRefresh != null) {
+      return onRefresh();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(OnSearch value) onSearch,
+    required TResult Function(OnScrollMax value) onScrollMax,
+    required TResult Function(OnRefresh value) onRefresh,
+  }) {
+    return onRefresh(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(OnSearch value)? onSearch,
+    TResult Function(OnScrollMax value)? onScrollMax,
+    TResult Function(OnRefresh value)? onRefresh,
+  }) {
+    return onRefresh?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(OnSearch value)? onSearch,
+    TResult Function(OnScrollMax value)? onScrollMax,
+    TResult Function(OnRefresh value)? onRefresh,
+    required TResult orElse(),
+  }) {
+    if (onRefresh != null) {
+      return onRefresh(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class OnRefresh implements SearchEvent {
+  const factory OnRefresh() = _$OnRefresh;
 }
 
 /// @nodoc

@@ -14,19 +14,16 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  
-
   @override
   Widget build(BuildContext context) {
-    
     return BlocProvider(
       create: (context) => getIt<SearchBloc>(),
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          
         ),
-        home:  HomePage(),
+        home: const HomePage(),
       ),
     );
   }

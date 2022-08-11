@@ -28,7 +28,7 @@ class ResultErrorWidget extends StatelessWidget {
             child: Center(
               child: Text(
                 errorText,
-                style:  TextStyle(color: kIndigoColor),
+                style:  const TextStyle(color: kBlackColor),
               ),
             ),
           ),
@@ -52,12 +52,13 @@ class ResultErrorWidget extends StatelessWidget {
                 BlocProvider.of<SearchBloc>(context).add(
                   const SearchEvent.onSearch(
                     imageQuery: 'wallpaper',
+                    
                   ),
                 );
               },
-              child:  Text(
+              child:  const Text(
                 'Refresh',
-                style: TextStyle(color: kIndigoColor),
+                style: TextStyle(color: kBlackColor),
               ),
             ),
           )

@@ -8,9 +8,9 @@ class LoadingIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Center(
+    return   Center(
         child: CircularProgressIndicator(
-      backgroundColor: kIndigoColor,
+      backgroundColor: kBlackColor,
       color: mainColor,
       strokeWidth: 6.0,
     ));

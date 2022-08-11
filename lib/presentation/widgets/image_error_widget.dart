@@ -12,7 +12,7 @@ class ImageErrorWidget extends StatelessWidget {
     return AspectRatio(
       aspectRatio: width / height,
       child: Container(
-        decoration: kDecoration,
+        decoration: kCardDecoration,
         child: const Center(
           child: Icon(
             Icons.error,
