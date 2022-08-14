@@ -23,7 +23,7 @@ class SearchBarWidget extends StatelessWidget {
               } catch (e) {}
             },
             icon: Image.asset(
-              "assets/images/logo_square.png",
+              "assets/images/pixabay_logo_square.png",
               width: 36,
               height: 36,
             )),
