@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wallpaper_app/core/colors.dart';
 import 'package:wallpaper_app/core/constant.dart';
 
 class ImageErrorWidget extends StatelessWidget {
@@ -13,12 +14,20 @@ class ImageErrorWidget extends StatelessWidget {
       aspectRatio: width / height,
       child: Container(
         decoration: kCardDecoration,
-        child: const Center(
-          child: Icon(
-            Icons.error,
-            color: Colors.red,
-            size: 56,
-          ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [
+            Icon(
+              Icons.broken_image_rounded,
+              color: Colors.red,
+              size: 56,
+            ),
+            SizedBox(height: 20,),
+            Text(
+              "image failed to load",
+              style: TextStyle(color: kBlackColor),
+            )
+          ],
         ),
       ),
     );

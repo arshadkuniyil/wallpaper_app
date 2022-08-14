@@ -28,40 +28,10 @@ class ResultErrorWidget extends StatelessWidget {
             child: Center(
               child: Text(
                 errorText,
-                style:  const TextStyle(color: kBlackColor),
+                style: const TextStyle(color: kBlackColor),
               ),
             ),
           ),
-          const SizedBox(
-            height: 18,
-          ),
-          Container(
-            width: double.infinity,
-            height: 42,
-            decoration: BoxDecoration(boxShadow: kBoxshadow),
-            child: ElevatedButton(
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(mainColor),
-                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                   RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(7),
-                  ),
-                ),
-              ),
-              onPressed: () {
-                BlocProvider.of<SearchBloc>(context).add(
-                  const SearchEvent.onSearch(
-                    imageQuery: 'wallpaper',
-                    
-                  ),
-                );
-              },
-              child:  const Text(
-                'Refresh',
-                style: TextStyle(color: kBlackColor),
-              ),
-            ),
-          )
         ],
       ),
     );

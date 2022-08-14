@@ -18,7 +18,14 @@ class HomePage extends StatelessWidget {
           title: SearchBarWidget(),
           flexibleSpace: Container(decoration: kMainGradient),
           bottom: TabBar(
-            labelColor: kBlackColor,
+            indicator: BoxDecoration(
+              color: Colors.grey.shade700,
+              borderRadius: BorderRadius.circular(16),
+            ),
+            indicatorPadding:
+                const EdgeInsets.symmetric(horizontal: 0.5, vertical: 10),
+            labelColor: Colors.white,
+            unselectedLabelColor: kBlackColor,
             indicatorColor: kBlackColor,
             isScrollable: true,
             tabs: List.generate(

@@ -20,7 +20,10 @@ class SetWallpaperButton extends StatelessWidget {
       valueListenable: buttonLoading,
       builder: (context, value, child) {
         if (buttonLoading.value) {
-          return const LoadingIndicator();
+          return const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: LoadingIndicator(),
+          );
         }
 
         return Padding(
@@ -28,10 +31,22 @@ class SetWallpaperButton extends StatelessWidget {
           child: Container(
             height: 36,
             width: double.infinity,
-            decoration: BoxDecoration(boxShadow: kBoxshadow),
+            decoration:  BoxDecoration(
+              borderRadius: BorderRadius.circular(8),
+              boxShadow: [
+              BoxShadow(
+                color: Colors.grey.shade800,
+                blurRadius: 1,
+                spreadRadius: 1,
+                offset: const Offset(
+                  1,
+                  1,
+                ),
+              )
+            ]),
             child: ElevatedButton(
               style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(mainColor),
+                backgroundColor: MaterialStateProperty.all(Colors.grey.shade700),
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                   RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8.0),
@@ -67,7 +82,7 @@ class SetWallpaperButton extends StatelessWidget {
               },
               child:  const Text(
                 'Set Wallpaper',
-                style: TextStyle(color: kBlackColor),
+                style: TextStyle(color: Colors.white),
               ),
             ),
           ),
